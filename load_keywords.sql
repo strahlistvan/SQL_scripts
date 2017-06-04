@@ -10,6 +10,7 @@ DROP PROCEDURE IF EXISTS `load_keywords` $$
 CREATE PROCEDURE `load_keywords` ()
 BEGIN
   DECLARE v_keyword_name VARCHAR(255);
+  DECLARE v_term_taxonomy_id INTEGER;
   DECLARE v_term_id	INTEGER;
   DECLARE v_done BOOLEAN DEFAULT FALSE;
 
@@ -62,6 +63,12 @@ BEGIN
   0,
   1
  );
+ 
+ SELECT MAX(term_taxonomy_id) 
+   INTO v_term_taxonomy_id
+   FROM wp_sample.wp_term_taxonomy;
+
+--  CALL load_post_keywords(v_keyword_name, v_term_taxonomy_id);
  
  END LOOP cursor_loop;
 END $$
