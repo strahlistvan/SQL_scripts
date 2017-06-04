@@ -39,6 +39,8 @@ BEGIN
 
    
  END LOOP cursor_loop;
+ 
+ COMMIT;
 END $$
 
 DELIMITER ;

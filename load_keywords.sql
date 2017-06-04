@@ -68,7 +68,9 @@ BEGIN
    INTO v_term_taxonomy_id
    FROM wp_sample.wp_term_taxonomy;
 
---  CALL load_post_keywords(v_keyword_name, v_term_taxonomy_id);
+  COMMIT; 
+  
+  CALL load_post_keywords(v_keyword_name, v_term_taxonomy_id);
  
  END LOOP cursor_loop;
 END $$
